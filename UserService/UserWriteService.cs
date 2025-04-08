@@ -55,6 +55,11 @@ namespace Exam.UserManager.Service
                 UserModel user = _userRepository.Get(id);
                 //what if user is not existing?
                 user.IsActive = false;
+                if (user == null)
+                {
+                    throw new ArgumentException("User not found!");
+                }
+
 
                 bool result = _userRepository.Update(user); //result of update from user repository
                 //***
